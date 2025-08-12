@@ -1,6 +1,8 @@
-﻿using DSA_CSharp.PalindromeSolution;
+﻿using DSA_CSharp.TwoSumSolution;
 
-PalindromeSolution solution = new PalindromeSolution();
-Console.WriteLine(solution.IsPalindrome(121));
+TwoSumSolution solution = new TwoSumSolution();
+int[] numbers = new int[] { 3, 4, 7 };
+int[] results = solution.TwoSum(numbers, 11);
+Console.WriteLine($"{results[0]}, {results[1]} ");
 Console.WriteLine("\nPress any key to terminate program.");
 Console.ReadKey();
