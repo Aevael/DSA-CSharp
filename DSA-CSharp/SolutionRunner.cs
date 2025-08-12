@@ -2,5 +2,5 @@
 
 PalindromeSolution solution = new PalindromeSolution();
 Console.WriteLine(solution.IsPalindrome(121));
-Console.WriteLine("Press any key to terminate program.");
+Console.WriteLine("\nPress any key to terminate program.");
 Console.ReadKey();
