@@ -1,6 +1,6 @@
-﻿using DSA_CSharp.TwoSumSolution;
+﻿using DSA_CSharp.AddTwoNumbersSolution;
 
-TwoSumSolution solution = new TwoSumSolution();
+AddTwoNumbersSolution solution = new AddTwoNumbersSolution();
 int[] numbers = new int[] { 3, 4, 7 };
 int[] results = solution.TwoSum(numbers, 11);
 Console.WriteLine($"{results[0]}, {results[1]} ");
