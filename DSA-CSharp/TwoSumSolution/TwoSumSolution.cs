@@ -10,30 +10,25 @@ namespace DSA_CSharp.TwoSumSolution
     {
         public int[] TwoSum(int[] nums, int target)
         {
+            Dictionary<int, int> indexTracker = new Dictionary<int, int>();
 
-            int[] result = new int[2];
+            for (int i = 0; i < nums.Length; i++) {
+                
+                int supplement = target - nums[i];
 
-            for (int i = 0; i < nums.Length; i++)
-            {
-
-                for (int j = 0; j < nums.Length; j++)
+                if (indexTracker.ContainsKey(supplement))
                 {
-
-                    if (i != j)
-                    {
-                        int n1 = nums[i];
-                        int n2 = nums[j];
-
-                        if (n1 + n2 == target)
-                        {
-                            result[0] = i;
-                            result[1] = j;
-                        }
-                    }
+                    return [indexTracker[supplement], i];
+                }
+                else
+                {
+                    indexTracker[nums[i]] = i;
                 }
             }
 
-            return result;
+            return [];
         }
     }
 }
+
+
