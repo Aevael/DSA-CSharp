@@ -1,72 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+// Definition for singly-linked list.
+public class ListNode {
+     public int val;
+     public ListNode next;
+     public ListNode(int val=0, ListNode next=null) {
+        this.val = val;
+        this.next = next;
+     }
+ }
 
-namespace DSA_CSharp.AddTwoNumbersSolution
+public class Solution
 {
-    internal class AddTwoNumbersSolution
+    public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
     {
-
-
-        public class ListNode
+        int carry = 0;
+        ListNode head1 = l1;
+        ListNode head2 = l2;
+        ListNode start = new ListNode();
+        ListNode current = start;
+        int n1 = 0;
+        int n2 = 0;
+        bool check = false;
+        while (check == false)
         {
-            public int val;
-            public ListNode next;
-            public ListNode(int val = 0, ListNode next = null)
+            if (head1 != null)
             {
-                this.val = val;
-                this.next = next;
+                n1 = head1.val;
+                head1 = head1.next;
+            }
+            else
+            {
+                n1 = 0;
+            }
+            if (head2 != null)
+            {
+                n2 = head2.val;
+                head2 = head2.next;
+            }
+            else
+            {
+                n2 = 0;
+            }
+            int add = n1 + n2 + carry;
+            if (add >= 10)
+            {
+                carry = 1;
+                current.val = add % 10;
+            }
+            else
+            {
+                carry = 0;
+                current.val = add;
+            }
+            if (head1 != null || head2 != null)
+            {
+                current.next = new ListNode();
+                current = current.next;
+            }
+            else if (head1 == null && head2 == null)
+            {
+                if (carry == 1)
+                {
+                    current.next = new ListNode(1);
+                }
+                check = true;
             }
         }
-
-       
-            public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
-            {
-            decimal val1 = 0;
-            decimal val2 = 0;
-            var check = false;
-            var digit = 0;
-            var n1 = l1;
-            var n2 = l2;
-            while (check == false)
-            {
-                var currentValue = n1.val;
-                n1 = n1.next;
-                val1 += (decimal)(currentValue * Math.Pow(10, digit));
-                digit += 1;
-                if (n1 == null)
-                {
-                    check = true;
-                    digit = 0;
-                }
-            }
-            check = false;
-            while (check == false)
-            {
-                var currentValue = n2.val;
-                n2 = n2.next;
-                val2 += (decimal)(currentValue * Math.Pow(10, digit));
-                digit += 1;
-                if (n2 == null)
-                {
-                    check = true;
-                    digit = 0;
-                }
-            }
-            var result = val1 + val2;
-            String resultString = result.ToString();
-            var resultArray = resultString.ToCharArray();
-            ListNode head = null;
-            for (int i = 0; i < resultArray.Length; i++)
-            {
-                ListNode currentNode = new ListNode((resultArray[i] - '0'), head);
-                head = currentNode;
-            }
-            return head;
-        }
-        
-
+        return start;
     }
 }
